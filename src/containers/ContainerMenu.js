@@ -1,4 +1,4 @@
-import { isBoole } from '../actions';
+import { isBoole ,isModal} from '../actions';
 import { connect } from 'react-redux';
 import Menu from '../components/Menu'
 
@@ -8,7 +8,9 @@ import Menu from '../components/Menu'
 |--------------------------------------------------
 */
 const mapStateToProps = (state,ownProps) =>({
-  bol : state.bol
+  bol : state.bol,
+  is : state.is,
+  data : state.data
 })
 
 /**
@@ -19,7 +21,9 @@ const mapStateToProps = (state,ownProps) =>({
 const mapDispatchToProps = (dispatch,ownProps) =>({
   handleBoole : (bol)=>{
     dispatch(isBoole(bol))
-  }
+  },
+
+  handleModal : (is)=>dispatch(isModal(is)),
 })
 
 /**

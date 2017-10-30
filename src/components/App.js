@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ContainerMenu from '../containers/ContainerMenu'
-
+import './app.css'
 /**
 |--------------------------------------------------
 | @class 组件容易

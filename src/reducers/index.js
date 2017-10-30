@@ -1,4 +1,4 @@
-import { BOOLE } from '../constants';
+import { BOOLE,ISMODAL } from '../constants';
 import { connect } from 'react-redux';
 
 /**
@@ -7,7 +7,9 @@ import { connect } from 'react-redux';
 |--------------------------------------------------
 */
 const initialState = {
-  bol : false
+  bol : false,
+  is : false,
+  data : {"id":"123","name":"aibo"}
 }
 
 /**
@@ -20,6 +22,11 @@ const ReducerApp = (state=initialState,action)=>{
     case BOOLE:
       return Object.assign({},state,{
         bol : action.bol
+      })
+
+    case ISMODAL:
+      return Object.assign({},state,{
+        is : action.is
       })
     default:
       return state;

@@ -1,0 +1,22 @@
+.modal{
+  width: 800px;
+  height: 500px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -400px;
+  margin-top: -250px;
+  border: 1px solid #eaeaea;
+  padding: 5px 20px;
+  background: #ffffff;
+  box-shadow: 0 3px 3px #eaeaea;
+  color: #666666;
+  
+}
+
+.modal span{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
