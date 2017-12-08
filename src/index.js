@@ -1,19 +1,22 @@
-import React, { Component } from 'react';
-import ReactDOM,{render} from 'react-dom';
-import { createStore } from 'redux';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore,applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import reducer from './reducers';
+import thunk from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import App from './containers/App';
 
-import reducer from './reducers'
-import App from './components/App';
+let middleware = [thunk];
+if(process.env.NODE_ENV !== 'production'){
+  middleware.push(createLogger())
+}
+const store = createStore(
+  reducer,
+  applyMiddleware(...middleware)
+);
 
-/**
-|--------------------------------------------------
-| @const 创建reducer，Dev Tools视图工具
-|--------------------------------------------------
-*/
-let store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
-render(
+ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,

@@ -1,25 +1,16 @@
-import { BOOLE ,ISMODAL} from '../constants';
+export const RECEIVE_POSTS = "RECEIVE_POSTS";
 
-/**
-|--------------------------------------------------
-| @const action操作
-|--------------------------------------------------
-*/
-export const isBoole = (bol)=>{
-  return{
-    type : BOOLE,
-    bol
-  }
+export const receivePosts = json =>({
+  type : RECEIVE_POSTS,
+  data : json.data.children.map( value => value.data)
+})
+
+const fetchData = () => dispatch =>{
+  return fetch(`https://www.reddit.com/r/reactjs.json`)
+    .then(response => response.json())
+    .then(json => dispatch(receivePosts(json)))
 }
 
-/**
-|--------------------------------------------------
-| @const 显示模态框
-|--------------------------------------------------
-*/
-export const isModal = (is)=>{
-  return {
-    type : ISMODAL,
-    is
-  }
+export const RequestFetch = () => dispatch => {
+  return dispatch(fetchData())
 }

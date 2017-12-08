@@ -1,36 +1,24 @@
-import { BOOLE,ISMODAL } from '../constants';
-import { connect } from 'react-redux';
+import { RECEIVE_POSTS } from '../actions/';
+import { combineReducers } from 'redux';
 
-/**
-|--------------------------------------------------
-| @const 初始化state
-|--------------------------------------------------
-*/
-const initialState = {
-  bol : false,
-  is : false,
-  data : {"id":"123","name":"aibo"}
+const initState = {
+  posts:[]
 }
 
-/**
-|--------------------------------------------------
-| @const reducer操作state
-|--------------------------------------------------
-*/
-const ReducerApp = (state=initialState,action)=>{
+const initData = (state=initState,action)=>{
   switch(action.type){
-    case BOOLE:
-      return Object.assign({},state,{
-        bol : action.bol
-      })
-
-    case ISMODAL:
-      return Object.assign({},state,{
-        is : action.is
-      })
+    case RECEIVE_POSTS:
+      return{
+        ...state,
+        posts : action.data
+      }
     default:
-      return state;
+      return state
   }
 }
 
-export default ReducerApp;
+const rootReducer = combineReducers({
+  initData
+})
+
+export default rootReducer;
